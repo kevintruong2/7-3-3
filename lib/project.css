@@ -1,0 +1,196 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: .9em;
+    color: darkblue;
+    background: lightgray url(/graphics/cream_pixels.png);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    text-align: center;
+}
+
+.bar:hover {
+    fill: brown;
+}
+
+.axis {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.axis--x path {
+    display: none;
+}
+
+text.barinfo {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.con {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    font-size: .9em;
+    /* border: 1px solid red; */
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chartcon {
+    float: left;
+    font-size: .8em;
+    /* border: .1px solid gray; */
+}
+
+.legend{
+    font-weight: bold;
+    margin-top: 0px;    
+    margin-left: 50px;
+    font-size: .7em;
+}
+
+.legsquare{
+    width: 11px; 
+    height: 11px; 
+    display: inline-block;
+    margin: 0px;
+}
+
+.legtext{
+    display: inline;
+    margin-left: 5px;
+    vertical-align: top;
+}
+
+.noteconL {
+    /* border: 1px dashed gray; */
+    width: 315px;
+    height: 550px;
+    float: left;
+    font-size: .9em;
+    margin-right: -40px;
+}
+
+.noteconR {
+    /* border: 1px dashed gray; */
+    width: 420px;
+    height: 550px;
+    float: left;
+    font-size: .9em;
+    margin-left: -300px;
+}
+
+.dc_chart{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.chartTitle{
+    margin-bottom: -15px;
+}
+
+li {
+    line-height: 18px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: .5px solid #ddd;
+    font-size: .9em;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 4px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+.chevron{
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    text-align: center;
+}
+
+.accordion-container {
+    width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accordion {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: darkblue;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 1s ease-in;
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 12px;
+    display: none;
+    max-height: 600px;
+    overflow: auto;
+    transition: max-height 1s ease-out;
+}
+
+.cbxoptions{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table{
+    width: 100%;
+} 
