@@ -1,84 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MP 7-3-3: Life Expectancy in Chicago 1990-2010</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MP 7-3-3: Life Expectancy in Chicago 1990-2010</title>
 
-    <link rel="stylesheet"
-      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://d3js.org/topojson.v3.min.js"></script>
-    <script src="https://d3js.org/queue.v1.min.js"></script>
-    <script src="./lib/jquery.csv.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="./lib/jquery.csv.min.js"></script>
 
-    <link rel="stylesheet" href="./lib/project.css">
-  </head>
+  <link rel="stylesheet" href="./lib/project.css">
+</head>
 
 
-  <body>
-    <h2>Life Expectancy in Chicago 1990-2010</h2>
+<body>
+  <h2 id="top" class="header">Life Expectancy in Chicago 1990-2010</h2>
 
-    <div class="con">
-      <div class="clearfix">
-        <div id="infol" class="noteconL">
+  <div class="con">
+    <div class="clearfix">
+      <div id="infol" class="noteconL">
+      </div>
+
+      <div class="chartcon">
+        <svg width="800" height="550" id="map"></svg>
+      </div>
+      <div class="noteconR">
+        <div id="legend">
+          <div style="margin-left: 50px; margin-bottom: 5px; font-weight:bold;">Legend</div>
         </div>
-
-        <div class="chartcon">
-          <svg width="800" height="550" id="map"></svg>
-        </div>
-        <div class="noteconR">
-          <div id="legend"><div style="margin-left: 50px; margin-bottom: 5px; font-weight:bold;">Legend</div></div>
-          <div id="infor"></div>
-        </div>
+        <div id="infor"></div>
       </div>
     </div>
-    <!-- <div class="accordion-container" style="text-align: right; font-size: .8em; margin-bottom: 10px; color:gray;"><a href="javascript::void" onclick="showAllCharts(); return false;"><span id="shchart" style="color:gray;">Show</span></a> All Charts</div> -->
-    <div class="accordion-container">
-      <button class="accordion" id="le"><span style="margin-right: 20px;"><img
-            src="./graphics/chevron-u.png" class="chevron"></span>Life Expectancy, 1990 -
-        2010</button>
-      <div class="panel">
-        <div id="le" class="cbxoptions"></div>
-        <div id="le_dc" class="dc_chart"></div>
-      </div>
-    </div>
+    <div id="usage" style="text-align:center; color: gray; font-size: 12pt;"><span style="color:red;">*</span>Usage: To
+      explore for more statistics of a particular community, please click on the map.</div>
+  </div>
 
-    <div class="accordion-container">
-      <button class="accordion" id="se"><span style="margin-right: 20px;"><img
-            src="./graphics/chevron-u.png" class="chevron"></span>Socioeconomic Indicators,
-        2008 - 2012</button>
-      <div class="panel">
-        <div id="se" class="cbxoptions"></div>
-        <div id="se_dc" class="dc_chart"></div>
+  <div id="details" style="display: none">
+    <!-- timeline -->
+    <div id="timeline" class="timeline">
+      <div class="tl_container tl_left">
+        <div class="tl_content">
+          <!-- <h2>Information</h2> -->
+          <p id="summary"></p>
+        </div>
       </div>
-    </div>
-
-    <div class="accordion-container">
-      <button class="accordion" id="ph"><span style="margin-right: 20px;"><img
-            src="./graphics/chevron-u.png" class="chevron"></span>Public Health Indicators,
-        2005 - 2011</button>
-      <div class="panel">
-        <div id="ph" class="cbxoptions"></div>
-        <div id="ph_dc" class="dc_chart"></div>
+      <div class="tl_container tl_right">
+        <div class="tl_content">
+          <h2>2010 Life Expectancy</h2>
+          <p id="c2010"></p>
+        </div>
       </div>
-
-      <div class="accordion-container">
-        <button class="accordion" id="cod"><span style="margin-right: 20px;"><img
-              src="./graphics/chevron-u.png" class="chevron"></span>Underlying Causes of
-          Death, 2006 - 2010</button>
-        <div class="panel">
-          <div id="cod" class="cbxoptions"></div>
-          <div id="cod_dc" class="dc_chart"></div>
+      <div class="tl_container tl_left">
+        <div class="tl_content">
+          <h2>2000 Life Expectancy</h2>
+          <p id="c2000"></p>
+        </div>
+      </div>
+      <div class="tl_container tl_right">
+        <div class="tl_content">
+          <h2>1990 Life Expectancy</h2>
+          <p id="c1990"></p>
+        </div>
+      </div>
+      <div class="tl_container tl_left">
+        <div class="tl_content">
+          <div class="accordion-container">
+            <table class="accordion">
+              <tr>
+                <td valign="middle" width="50px"><img src="./graphics/chevron-d.png" class="chevron"></td>
+                <td valign="middle">
+                  <h2>2008 - 2012: Socioeconomic Indicators</h2>
+                </td>
+              </tr>
+            </table>
+            <div class="panel">
+              <div id="se" class="cbxoptions"></div>
+              <div id="se_dc" class="dc_chart"></div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <div class="tl_container tl_right">
+        <div class="tl_content">
+          <div class="accordion-container">
+            <table class="accordion">
+              <tr>
+                <td valign="middle" width="50px"><img src="./graphics/chevron-d.png" class="chevron"></td>
+                <td valign="middle">
+                  <h2>2005 - 2011: Public Health Indicators</h2>
+                </td>
+              </tr>
+            </table>
+            <div class="panel">
+              <div id="ph" class="cbxoptions"></div>
+              <div id="ph_dc" class="dc_chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <script src="./lib/project.js"></script>
-    </body>
+      <div class="tl_container tl_right">
+        <div class="tl_content">
+          <div class="accordion-container">
+            <table class="accordion">
+              <tr>
+                <td valign="middle" width="50px"><img src="./graphics/chevron-d.png" class="chevron"></td>
+                <td valign="middle">
+                  <h2>2006 - 2010: Underlying Causes of Death</h2>
+                </td>
+              </tr>
+            </table>
+            <div class="panel">
+              <div id="cod" class="cbxoptions"></div>
+              <div id="cod_dc" class="dc_chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  </html>
+      <div style="text-align: right; font-size: 10pt; margin-top: 10px;"><a href="javascript:void()"
+          onclick='$(document).scrollTop($("#top").offset().top - 25)'>Go to top</a></div>
+      </div>
+    </div>
+      
+
+  </div>
+  <!-- end timeline -->
+
+  <script src="./lib/project.js"></script>
+</body>
+
+</html>

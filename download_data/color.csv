@@ -1,7 +1,7 @@
 index,name,color
 1,navy,#000080
 2,mediumblue,#0000cd
-3,blue,#0000ff
+3,blue,#C70039
 4,darkgreen,#006400
 5,teal,#008080
 6,darkcyan,#008b8b
@@ -52,8 +52,8 @@ index,name,color
 51,peru,#cd853f
 52,chocolate,#d2691e
 53,tan,#d2b48c
-54,,#C70039
-55,orchid,#da70d6
+54,,#da70d6
+55,orchid,Black
 56,crimson,#dc143c
 57,,#567890
 58,plum,#dda0dd
@@ -62,11 +62,11 @@ index,name,color
 61,violet,#ee82ee
 62,sandybrown,#f4a460
 63,salmon,#fa8072
-64,red,#ff0000
+64,tomato,#ff6347
 65,fuchsia,#ff00ff
 66,deeppink,#ff1493
 67,orangered,#ff4500
-68,tomato,#ff6347
+68,black,#000000
 69,hotpink,#ff69b4
 70,coral,#ff7f50
 71,darkorange,#ff8c00
