@@ -9,14 +9,6 @@ body {
     background: lightgray url(../graphics/cream_pixels.png);
 }
 
-/* h1,
-h2,
-h3,
-h4,
-h5 {
-    text-align: center;
-} */
-
 .header {
     text-align: center;
 }
